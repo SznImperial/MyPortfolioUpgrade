@@ -1,0 +1,22 @@
+src/
+│
+├── assets/          # Images, logos, icons
+├── components/      # Reusable UI elements
+│   ├── Navbar.jsx
+│   ├── Footer.jsx
+│   ├── Hero.jsx
+│   ├── Skills.jsx
+│   ├── Portfolio.jsx
+│   ├── BlogList.jsx
+│   ├── BlogPost.jsx
+│
+├── pages/           # Page-level components
+│   ├── Home.jsx
+│   ├── About.jsx
+│   ├── PortfolioPage.jsx
+│   ├── Blog.jsx
+│   ├── Contact.jsx
+│
+├── App.jsx
+├── index.js
+└── styles/          # Global styles, variables
