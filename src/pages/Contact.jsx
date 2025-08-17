@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
-import Footer from "../components/Footer.jsx";
+
 
 const Contact = () => {
     const [submitted, setSubmitted] = useState(false);
