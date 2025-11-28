@@ -1,34 +1,31 @@
 import React from "react";
 import BlogList from "../components/BlogList.jsx";
-
+import { motion } from "framer-motion";
 
 const Blog = () => {
     return (
-        <div
-            style={{
-                fontFamily: "monospace",
-                color: "#00FF7F",
-                backgroundColor: "#111",
-                minHeight: "100vh",
-                width: "100%",
-                boxSizing: "border-box",
-                padding: "3rem 1rem",
-            }}
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="pt-32 pb-16 bg-deep-black min-h-screen text-neon-green font-mono"
         >
-            <h1
-                style={{
-                    fontSize: "2.5rem",
-                    marginBottom: "2rem",
-                    textAlign: "center",
-                }}
-            >
-                &gt; My Blog
-            </h1>
+            <div className="max-w-7xl mx-auto px-6">
+                
+                {/* Section Header */}
+                <motion.h1
+                    initial={{ y: -20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.1 }}
+                    className="text-4xl md:text-6xl font-black mb-16 text-center text-white"
+                >
+                    <span className="text-neon-green">/</span> DATA_LOGS
+                </motion.h1>
 
-            <BlogList />
+                {/* The Blog List is rendered here */}
+                <BlogList />
 
-
-        </div>
+            </div>
+        </motion.div>
     );
 };
 

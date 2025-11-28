@@ -1,32 +1,40 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import './styles/responsive.css';
-import Navbar from "./components/Navbar.jsx";
-import Footer from "./components/Footer.jsx";
-import Home from "./pages/Home.jsx";
-import About from "./pages/About.jsx";
-import PortfolioPage from "./pages/PortfolioPage.jsx";
-import Blog from "./pages/Blog.jsx";
-import Contact from "./pages/Contact.jsx";
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-function App() {
+// Import essential components (Navbar/Loader are always present)
+import Navbar from './components/Navbar.jsx'; 
+import LoadingSpinner from './components/LoadingSpinner.jsx'; 
+
+// --- LAZY LOADING: This tells React to wait for the component's code to load ---
+// This is the core fix for the universal loader
+const LazyHome = lazy(() => import('./pages/Home.jsx'));
+const LazyAbout = lazy(() => import('./pages/About.jsx'));
+const LazyBlog = lazy(() => import('./pages/Blog.jsx'));
+const LazyContact = lazy(() => import('./pages/Contact.jsx'));
+const LazyPortfolioPage = lazy(() => import('./pages/PortfolioPage.jsx'));
+
+const App = () => {
     return (
-        <Router>
-            <div style={{ minHeight: "100vh", fontFamily: "monospace", backgroundColor: "#000", color: "#00FF7F" }}>
-                <Navbar />
-                <main style={{ paddingTop: "6rem", paddingLeft: "2rem", paddingRight: "2rem" }}>
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/about" element={<About />} />
-                        <Route path="/portfolio" element={<PortfolioPage />} />
-                        <Route path="/blog" element={<Blog />} />
-                        <Route path="/contact" element={<Contact />} />
-                    </Routes>
-                </main>
-                <Footer />
-            </div>
-        </Router>
+        <BrowserRouter>
+            {/* Navbar stays outside the Suspense wrapper so it loads instantly */}
+            <Navbar />
+            
+            {/* Suspense displays the spinner while the components are loading */}
+            <Suspense fallback={<LoadingSpinner />}>
+                <Routes>
+                    {/* Home Page (Your main scrollable dashboard) */}
+                    <Route path="/" element={<LazyHome />} />
+                    
+                    {/* Dedicated Content Pages */}
+                    <Route path="/about" element={<LazyAbout />} />
+                    <Route path="/portfolio" element={<LazyPortfolioPage />} />
+                    <Route path="/work" element={<LazyPortfolioPage />} />
+                    <Route path="/blog" element={<LazyBlog />} />
+                    <Route path="/contact" element={<LazyContact />} />
+                </Routes>
+            </Suspense>
+        </BrowserRouter>
     );
-}
+};
 
 export default App;
