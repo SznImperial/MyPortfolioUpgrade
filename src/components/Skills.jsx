@@ -6,9 +6,9 @@ import {
   FaReact, FaJava, FaPython, FaNodeJs 
 } from 'react-icons/fa';
 import { 
-  SiSpringboot, SiMysql, SiTailwindcss, SiMongodb, SiDotnet 
+  SiSpringboot, SiMysql, SiTailwindcss // Removed SiMongodb, SiDotnet
 } from 'react-icons/si';
-import { TbBrandCSharp } from "react-icons/tb"; // <--- NEW IMPORT
+import { TbBrandCSharp } from "react-icons/tb"; 
 
 const SkillCard = ({ name, icon: Icon, level }) => {
   return (
@@ -48,7 +48,7 @@ const Skills = () => {
     { name: "Python", icon: FaPython, level: "85%" },
     { name: "React", icon: FaReact, level: "80%" },
     { name: "Spring Boot", icon: SiSpringboot, level: "75%" },
-    { name: "C#", icon: TbBrandCSharp, level: "70%" }, // <--- UPDATED ICON
+    { name: "C#", icon: TbBrandCSharp, level: "70%" }, 
     { name: "Node.js", icon: FaNodeJs, level: "75%" },
     { name: "MySQL", icon: SiMysql, level: "85%" },
     { name: "Tailwind", icon: SiTailwindcss, level: "90%" },

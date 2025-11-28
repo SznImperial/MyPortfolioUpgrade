@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
+// Removed unused imports: useEffect, useRef
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 // --- THE DECRYPTION TEXT COMPONENT ---
-// This handles the "Matrix" scramble effect on hover
 const HyperText = ({ text, active }) => {
   const [displayText, setDisplayText] = useState(text);
   const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@%&";
@@ -26,7 +26,7 @@ const HyperText = ({ text, active }) => {
       if (iteration >= text.length) {
         clearInterval(interval);
       }
-      iteration += 1 / 2; // Speed of decryption
+      iteration += 1 / 2; 
     }, 30);
   };
 

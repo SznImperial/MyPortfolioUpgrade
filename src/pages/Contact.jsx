@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion'; 
+import { motion } from 'framer-motion'; // Removed AnimatePresence
 import emailjs from "emailjs-com"; 
 import { 
     FiMail, FiPhone, FiMapPin, FiSend, FiGithub, FiLinkedin, 
-    FiRefreshCw, FiCheckCircle 
+    FiRefreshCw // Removed FiCheckCircle
 } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 
@@ -18,7 +18,7 @@ const contactData = {
 };
 
 const Contact = () => {
-    const [submitted, setSubmitted] = useState(false);
+    // Removed 'submitted' state as it wasn't being used in the UI
     const [isSending, setIsSending] = useState(false);
 
     // --- EMAILJS LOGIC ---
@@ -36,9 +36,8 @@ const Contact = () => {
             .then(
                 (result) => {
                     console.log(result.text);
-                    setSubmitted(true);
                     setIsSending(false);
-                    setTimeout(() => setSubmitted(false), 5000); 
+                    alert("Message Sent Successfully!"); // Simple feedback
                 },
                 (error) => {
                     console.log(error.text);
@@ -52,8 +51,6 @@ const Contact = () => {
     // --- END EMAILJS LOGIC ---
 
     return (
-        // FIX: Replaced py-32 with pt-40 to push content below the fixed Navbar 
-        // when this page is rendered alone via React Router.
         <section id="contact" className="pt-40 pb-16 bg-deep-black min-h-screen relative overflow-hidden">
             
             {/* Background Cyber Grid */}
@@ -64,7 +61,8 @@ const Contact = () => {
                 {/* Header */}
                 <motion.div 
                     initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
                     className="flex items-center gap-4 mb-16"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-white font-mono">
@@ -78,7 +76,8 @@ const Contact = () => {
                     {/* LEFT: Connection Details */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
                     >
                         <h3 className="text-2xl font-bold text-white mb-6">
                             Let's <span className="text-neon-green">Collaborate</span>
@@ -139,7 +138,8 @@ const Contact = () => {
                     {/* RIGHT: The Form */}
                     <motion.div
                         initial={{ opacity: 0, x: 30 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
                         className="bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-sm relative"
                     >

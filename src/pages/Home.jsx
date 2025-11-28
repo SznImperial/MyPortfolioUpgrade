@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from 'framer-motion'; // Keep this for animations on children components
+// Removed unused import: motion
 import Hero from "../components/Hero.jsx";
 import Skills from "../components/Skills.jsx";
 import Portfolio from "../components/Portfolio.jsx";
@@ -19,7 +19,7 @@ const Home = () => {
                 <Skills /> 
                 
                 {/* ------------------------------------- */}
-                {/* 3. PORTFOLIO SECTION (WITH MISSING HEADER) */}
+                {/* 3. PORTFOLIO SECTION */}
                 {/* ------------------------------------- */}
                 <section className="mt-20"> 
                     {/* The missing header for the project grid */}
